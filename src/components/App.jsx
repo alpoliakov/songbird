@@ -1,10 +1,6 @@
 import React from 'react';
 import cls from './App.module.css';
-import { hot, setConfig} from 'react-hot-loader';
-
-setConfig({
-  showReactDomPatchNotification: false
-})
+import {hot} from 'react-hot-loader/root';
 
 const App = () => {
   return (
@@ -12,4 +8,4 @@ const App = () => {
   )
 }
 
-export default hot(module)(App);
+export default hot(App);

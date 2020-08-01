@@ -5,12 +5,15 @@
       {
         "modules": false,
         "useBuiltIns": "entry",
-        "corejs": "3.6"
+        "corejs": "3.6",
+        "exclude": ["transform-async-to-generator", "transform-regenerator"],
+        "loose": true
       }
     ],
     "@babel/preset-react"
   ],
   "plugins": [
+    ["module:fast-async", { "spec": true }],
     "react-hot-loader/babel",
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-syntax-dynamic-import"

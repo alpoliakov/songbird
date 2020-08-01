@@ -16,6 +16,7 @@ const config = env => ({
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+
   module: {
     rules: [
       {
@@ -26,7 +27,22 @@ const config = env => ({
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
-      }
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: 'file-loader',
+      },
     ]
   },
   plugins: [
