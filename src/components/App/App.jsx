@@ -3,17 +3,20 @@ import { hot } from 'react-hot-loader/root';
 import Header from "../Header/Header";
 import GameOver from "../GameOver/GameOver";
 import Game from "../Game/Game";
+import birdsData from "../../data/birds";
 
 const App = () => {
   const [gameOver, setGameOver] = useState(false);
   const [page, setPage] = useState(0);
   const [win, setWin] = useState(false);
   const [totalScore, setTotalScore] = useState(0);
+  const [birdsList, setBirdsList] = useState([]);
 
   useEffect(() => {
     setGameOver(false);
-    setWin(false);
-    setTotalScore(5);
+    setWin(true);
+    setTotalScore(0);
+    setBirdsList(birdsData[page]);
   })
 
   const changePage = () => {
@@ -36,6 +39,7 @@ const App = () => {
       {!gameOver && <Game
         changePage={changePage}
         win={win}
+        birdsList={birdsList}
       />}
     </>
   );
