@@ -26,5 +26,4 @@ Game.propTypes = {
   birdsList: PropTypes.shape([]).isRequired,
 };
 
-
 export default Game;
