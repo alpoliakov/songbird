@@ -14,7 +14,7 @@ const App = () => {
 
   useEffect(() => {
     setGameOver(false);
-    setWin(true);
+    // setWin(true);
     setTotalScore(0);
     setBirdsList(birdsData[page]);
   })
@@ -27,6 +27,7 @@ const App = () => {
       result = 5;
     }
     setPage(result);
+    setWin(false);
   }
 
   return (

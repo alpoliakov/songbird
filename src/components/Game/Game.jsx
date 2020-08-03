@@ -8,7 +8,9 @@ const Game = (props) => {
   const {changePage, win, birdsList} = props;
   return (
     <div className="gameBox">
-      <Quiz win={win}/>
+      <Quiz
+        win={win}
+      />
       <BirdList birdsList={birdsList}/>
       <Bird />
       <button type="button"

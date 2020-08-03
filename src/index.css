@@ -14,7 +14,7 @@ body {
   line-height: 1.5;
   color: #fff;
   text-align: left;
-  background-color: #456;
+  background-color: #222;
   font-family: 'Lato', sans-serif;
 }
 
@@ -97,9 +97,10 @@ body {
   grid:
     "quiz     quiz"
     "birdList bird"
-    "btn       btn";
-  row-gap: 20px;
-  column-gap: 40px;
+    "btn       btn"
+    / 1fr     1fr;
+  row-gap: 25px;
+  column-gap: 30px;
 }
 
 .quiz {
@@ -111,14 +112,20 @@ body {
   gap: 40px;
 }
 
+.birdList,
+.bird {
+  background-color: #303030;
+  border-radius: 0.25rem;
+}
+
 .birdList {
   grid-area: birdList;
-  background-color: #303030;
 }
 
 .bird {
   grid-area: bird;
-  background-color: #303030;
+  padding: 1rem;
+  border: 1px solid #444;
 }
 
 .btn {
