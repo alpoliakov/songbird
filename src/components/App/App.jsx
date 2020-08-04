@@ -4,6 +4,9 @@ import Header from "../Header/Header";
 import GameOver from "../GameOver/GameOver";
 import Game from "../Game/Game";
 import birdsData from "../../data/birds";
+import audioWin from "../../assets/audio/win.mp3";
+import audioError from "../../assets/audio/error.mp3"
+
 
 const App = () => {
   const [gameOver, setGameOver] = useState(false);
@@ -30,6 +33,18 @@ const App = () => {
     setWin(false);
   }
 
+  const choiceBird = () => {
+    const errorAudio = document.getElementById('audioError');
+    const winAudio = document.getElementById('audioWin');
+    if(win) {
+      winAudio.currentTime = 0;
+      winAudio.play();
+    }else {
+      errorAudio.currentTime = 0;
+      errorAudio.play();
+    }
+  }
+
   return (
     <>
       <Header
@@ -41,7 +56,14 @@ const App = () => {
         changePage={changePage}
         win={win}
         birdsList={birdsList}
+        choiceBird={choiceBird}
       />}
+      <audio src={audioWin} id="audioWin" >
+        <track default kind="captions" />
+      </audio>
+      <audio src={audioError} id="audioError" >
+        <track default kind="captions" />
+      </audio>
     </>
   );
 };

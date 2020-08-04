@@ -68,6 +68,7 @@ const config = (env) => ({
             loader: 'url-loader',
             options: {
               limit: 8192,
+              name: 'static/media/images/[name].[hash:8].[ext]',
             },
           },
         ],
@@ -75,6 +76,13 @@ const config = (env) => ({
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: 'file-loader',
+      },
+      {
+        test: /\.mp3$/,
+        loader: 'file-loader',
+        query: {
+          name: 'static/media/audio/[name].[hash:8].[ext]'
+        }
       },
     ],
   },
