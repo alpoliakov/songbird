@@ -7,19 +7,24 @@ import birdsData from "../../data/birds";
 import audioWin from "../../assets/audio/win.mp3";
 import audioError from "../../assets/audio/error.mp3"
 
-
 const App = () => {
   const [gameOver, setGameOver] = useState(false);
   const [page, setPage] = useState(0);
   const [win, setWin] = useState(false);
   const [totalScore, setTotalScore] = useState(0);
   const [birdsList, setBirdsList] = useState([]);
+  const [birdId, setBirdId] = useState(0);
+  const [bird, setBird] = useState({});
+
+  const errorAudio = document.getElementById('audioError');
+  const winAudio = document.getElementById('audioWin');
 
   useEffect(() => {
     setGameOver(false);
     // setWin(true);
     setTotalScore(0);
     setBirdsList(birdsData[page]);
+    setBird(birdsList[birdId - 1]);
   })
 
   const changePage = () => {
@@ -33,9 +38,7 @@ const App = () => {
     setWin(false);
   }
 
-  const choiceBird = () => {
-    const errorAudio = document.getElementById('audioError');
-    const winAudio = document.getElementById('audioWin');
+  const effectAudio = () => {
     if(win) {
       winAudio.currentTime = 0;
       winAudio.play();
@@ -43,6 +46,11 @@ const App = () => {
       errorAudio.currentTime = 0;
       errorAudio.play();
     }
+  }
+
+  const responseProcessing = (elem) => {
+    setBirdId(+elem.id);
+    effectAudio();
   }
 
   return (
@@ -55,8 +63,9 @@ const App = () => {
       {!gameOver && <Game
         changePage={changePage}
         win={win}
+        bird={bird}
         birdsList={birdsList}
-        choiceBird={choiceBird}
+        responseProcessing={responseProcessing}
       />}
       <audio src={audioWin} id="audioWin" >
         <track default kind="captions" />

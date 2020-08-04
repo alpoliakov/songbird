@@ -5,16 +5,18 @@ import BirdList from "../BirdList/BirdList";
 import Bird from "../Bird/Bird";
 
 const Game = (props) => {
-  const {changePage, win, birdsList, choiceBird} = props;
+  const {changePage, win, birdsList, responseProcessing, bird} = props;
   return (
     <>
       <div className="gameBox">
         <Quiz win={win} />
         <BirdList
           birdsList={birdsList}
-          choiceBird={choiceBird}
+          responseProcessing={responseProcessing}
         />
-        <Bird />
+        <Bird
+          bird={bird}
+        />
         <button type="button" className={win ? 'btn btnWin' : 'btn'} onClick={changePage}>
           Next Level
         </button>
@@ -26,8 +28,9 @@ const Game = (props) => {
 Game.propTypes = {
   changePage: PropTypes.func.isRequired,
   win: PropTypes.bool.isRequired,
-  birdsList: PropTypes.shape([]).isRequired,
-  choiceBird: PropTypes.func.isRequired,
+  birdsList: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])).isRequired,
+  responseProcessing: PropTypes.func.isRequired,
+  bird: PropTypes.shape({}).isRequired,
 };
 
 export default Game;

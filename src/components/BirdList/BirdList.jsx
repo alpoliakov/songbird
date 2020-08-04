@@ -3,22 +3,24 @@ import PropTypes from "prop-types";
 import cls from "./BirdList.module.css"
 
 const BirdList = (props) => {
-  const {birdsList, choiceBird} = props;
+  const {birdsList, responseProcessing} = props;
 
-  const handlerBird = () => {
-      choiceBird();
+  const handlerBird = (event) => {
+    const elem = event.target;
+    responseProcessing(elem);
   }
 
   return (
     <>
       <div className="birdList">
         <ul className={cls.birdsGroup}>
-          {birdsList.map(bird => <li
-            key={bird.id}
+          {birdsList.map(({id, name}) => <li
+            key={id}
+            id={id}
             className={cls.bird}
             role='presentation'
             onClick={handlerBird}
-          ><span className={cls.lamp} />{bird.name}</li>)}
+          ><span className={cls.lamp} />{name}</li>)}
         </ul>
       </div>
     </>
@@ -28,6 +30,6 @@ const BirdList = (props) => {
 export default BirdList;
 
 BirdList.propTypes = {
-  birdsList: PropTypes.shape([]).isRequired,
-  choiceBird: PropTypes.func.isRequired,
+  birdsList: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])).isRequired,
+  responseProcessing: PropTypes.func.isRequired,
 }
