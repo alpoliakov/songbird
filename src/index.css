@@ -30,6 +30,14 @@ body {
   }
 }
 
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.41rem;
+}
+
 .header {
   margin-top: .5rem;
   display: flex;
@@ -109,7 +117,6 @@ body {
   padding: 1rem;
   border-radius: 0.25rem;
   background-color: #303030;
-  gap: 40px;
 }
 
 .birdList,
@@ -126,6 +133,15 @@ body {
   grid-area: bird;
   padding: 1rem;
   border: 1px solid #444;
+}
+
+.birdImage {
+  width: 200px;
+  height: 155px;
+  border-radius: 10px;
+  vertical-align: middle;
+  border-style: none;
+  margin-right: 2rem;
 }
 
 .btn {

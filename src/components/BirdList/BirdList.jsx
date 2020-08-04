@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import cls from "./BirdList.module.css"
 
 const BirdList = (props) => {
-  const {birdsList, responseProcessing} = props;
+  const {birdsList, handlingQuizResponses} = props;
 
   const handlerBird = (event) => {
     const elem = event.target;
-    responseProcessing(elem);
+    handlingQuizResponses(elem);
   }
 
   return (
@@ -31,5 +31,5 @@ export default BirdList;
 
 BirdList.propTypes = {
   birdsList: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])).isRequired,
-  responseProcessing: PropTypes.func.isRequired,
+  handlingQuizResponses: PropTypes.func.isRequired,
 }
