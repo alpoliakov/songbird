@@ -25,16 +25,21 @@ const App = () => {
   };
 
   useEffect(() => {
-    setGameOver(false);
+    const over = () => {
+      if(page === 5 && win) {
+        setGameOver(true);
+      }
+    }
+    over();
     setBirdsList(birdsData[page]);
     setBird(birdsList[birdId - 1]);
-  }, [birdsList, page, birdId]);
+  }, [birdsList, page, birdId, win]);
 
   useLayoutEffect(() => {
     setRandomBird(random(birdsList));
   }, [birdsList]);
 
-  const removeClass = () => {
+  const removeClasses = () => {
     document.querySelectorAll('.lamp').forEach((item) => {
       item.classList.remove('winClass');
       item.classList.remove('errorClass');
@@ -45,13 +50,13 @@ const App = () => {
     if (!win) return;
     let result = page;
     result += 1;
-    if (result > 5) {
-      result = 5;
+    if (result > birdsList.length) {
+      result = birdsList.length;
     }
     setPage(result);
     setWin(false);
     setBirdId(0);
-    removeClass();
+    removeClasses();
   };
 
   const winPlay = () => {
@@ -71,7 +76,7 @@ const App = () => {
       setWin(true);
       winPlay();
       lampButton.classList.add('winClass');
-      setTotalScore(totalScore + 1);
+      setTotalScore(totalScore + 5);
     } else if (+elem.id !== +randomBird.id && !win) {
       errorPlay();
       lampButton.classList.add('errorClass');
