@@ -25,12 +25,10 @@ const App = () => {
   };
 
   useEffect(() => {
-    const over = () => {
-      if(page === 5 && win) {
-        setGameOver(true);
-      }
+    if(page === 5 && win) {
+      setGameOver(true);
+      setPage(0);
     }
-    over();
     setBirdsList(birdsData[page]);
     setBird(birdsList[birdId - 1]);
   }, [birdsList, page, birdId, win]);
@@ -76,7 +74,7 @@ const App = () => {
       setWin(true);
       winPlay();
       lampButton.classList.add('winClass');
-      setTotalScore(totalScore + 5);
+      setTotalScore(totalScore + 4);
     } else if (+elem.id !== +randomBird.id && !win) {
       errorPlay();
       lampButton.classList.add('errorClass');
@@ -86,7 +84,9 @@ const App = () => {
   return (
     <>
       <Header page={page} totalScore={totalScore} />
-      {gameOver && <GameOver />}
+      {gameOver && <GameOver
+        totalScore={totalScore}
+      />}
       {!gameOver && (
         <Game
           changePage={changePage}
