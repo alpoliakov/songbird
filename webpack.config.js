@@ -81,8 +81,8 @@ const config = (env) => ({
         test: /\.mp3$/,
         loader: 'file-loader',
         query: {
-          name: 'static/media/audio/[name].[hash:8].[ext]'
-        }
+          name: 'static/media/audio/[name].[hash:8].[ext]',
+        },
       },
     ],
   },

@@ -1,14 +1,13 @@
-import React, {useState, useEffect, useLayoutEffect} from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
-import Header from "../Header/Header";
-import GameOver from "../GameOver/GameOver";
-import Game from "../Game/Game";
-import birdsData from "../../data/birds";
-import audioWin from "../../assets/audio/win.mp3";
-import audioError from "../../assets/audio/error.mp3"
+import Header from '../Header/Header';
+import GameOver from '../GameOver/GameOver';
+import Game from '../Game/Game';
+import birdsData from '../../data/birds';
+import audioWin from '../../assets/audio/win.mp3';
+import audioError from '../../assets/audio/error.mp3';
 
 const App = () => {
-
   const [gameOver, setGameOver] = useState(false);
   const [page, setPage] = useState(0);
   const [win, setWin] = useState(false);
@@ -23,81 +22,80 @@ const App = () => {
 
   const random = (arr) => {
     return arr[Math.floor(Math.random() * arr.length)];
-  }
+  };
 
   useEffect(() => {
     setGameOver(false);
     setBirdsList(birdsData[page]);
     setBird(birdsList[birdId - 1]);
-  }, [birdsList, page, birdId])
+  }, [birdsList, page, birdId]);
 
   useLayoutEffect(() => {
     setRandomBird(random(birdsList));
-  }, [birdsList])
+  }, [birdsList]);
 
   const removeClass = () => {
-    document.querySelectorAll('.lamp').forEach(item => {
+    document.querySelectorAll('.lamp').forEach((item) => {
       item.classList.remove('winClass');
       item.classList.remove('errorClass');
     });
-  }
+  };
 
   const changePage = () => {
     if (!win) return;
-    let result  = page;
+    let result = page;
     result += 1;
-    if(result > 5) {
+    if (result > 5) {
       result = 5;
     }
     setPage(result);
     setWin(false);
     setBirdId(0);
     removeClass();
-  }
+  };
 
   const winPlay = () => {
     winAudio.currentTime = 0;
     winAudio.play();
-  }
+  };
 
   const errorPlay = () => {
     errorAudio.currentTime = 0;
     errorAudio.play();
-  }
+  };
 
   const handlingQuizResponses = (elem) => {
     setBirdId(+elem.id);
     const lampButton = elem.firstChild;
-    if(+elem.id === +randomBird.id && !win) {
+    if (+elem.id === +randomBird.id && !win) {
       setWin(true);
       winPlay();
       lampButton.classList.add('winClass');
       setTotalScore(totalScore + 1);
-    }else if(+elem.id !== +randomBird.id && !win){
+    } else if (+elem.id !== +randomBird.id && !win) {
       errorPlay();
       lampButton.classList.add('errorClass');
     }
-  }
+  };
 
   return (
     <>
-      <Header
-        page={page}
-        totalScore={totalScore}
-      />
+      <Header page={page} totalScore={totalScore} />
       {gameOver && <GameOver />}
-      {!gameOver && <Game
-        changePage={changePage}
-        win={win}
-        bird={bird}
-        birdsList={birdsList}
-        randomBird={randomBird}
-        handlingQuizResponses={handlingQuizResponses}
-      />}
-      <audio src={audioWin} id="audioWin" >
+      {!gameOver && (
+        <Game
+          changePage={changePage}
+          win={win}
+          bird={bird}
+          birdsList={birdsList}
+          randomBird={randomBird}
+          handlingQuizResponses={handlingQuizResponses}
+        />
+      )}
+      <audio src={audioWin} id="audioWin">
         <track default kind="captions" />
       </audio>
-      <audio src={audioError} id="audioError" >
+      <audio src={audioError} id="audioError">
         <track default kind="captions" />
       </audio>
     </>

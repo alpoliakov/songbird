@@ -1,19 +1,18 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cls from './Header.module.css';
 
-
 const Header = (props) => {
-  const {page, totalScore} = props;
+  const { page, totalScore } = props;
   useEffect(() => {
     const li = document.querySelectorAll('.page-item');
     li.forEach((elem, index) => {
       elem.classList.remove('active');
-      if(index === page) {
+      if (index === page) {
         elem.classList.add('active');
       }
-    })
-  })
+    });
+  });
   return (
     <>
       <div className={`header ${cls.header}`}>
