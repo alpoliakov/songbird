@@ -244,5 +244,14 @@ h4 {
   line-height: 1.5;
   border-radius: 0.25rem;
   color: #fff;
+  outline: none;
+}
+
+.btn-again:hover {
+  background-color: #00efb2;
+}
+
+.btn-again:active {
+  border: 1px solid #666!important;
 }
 

@@ -16,7 +16,9 @@ const App = () => {
   const [birdId, setBirdId] = useState(0);
   const [bird, setBird] = useState({});
   const [randomBird, setRandomBird] = useState({});
+  const [score, setScore] = useState(5);
   const step = 1;
+
 
   const errorAudio = document.getElementById('audioError');
   const winAudio = document.getElementById('audioWin');
@@ -76,18 +78,28 @@ const App = () => {
       setWin(true);
       winPlay();
       lampButton.classList.add('winClass');
-      setTotalScore(totalScore + 4);
+      setTotalScore(totalScore + score);
+      setScore(5);
     } else if (+elem.id !== +randomBird.id && !win) {
       errorPlay();
       lampButton.classList.add('errorClass');
+      setScore(score - 1);
     }
   };
+
+  const newGame = () => {
+    setGameOver(false);
+    setBirdsList(birdsData[page]);
+    setWin(false);
+    setTotalScore(0);
+  }
 
   return (
     <>
       <Header page={page} totalScore={totalScore} />
       {gameOver && <GameOver
         totalScore={totalScore}
+        newGame={newGame}
       />}
       {!gameOver && (
         <Game
