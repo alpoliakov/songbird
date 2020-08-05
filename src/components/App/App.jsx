@@ -16,6 +16,7 @@ const App = () => {
   const [birdId, setBirdId] = useState(0);
   const [bird, setBird] = useState({});
   const [randomBird, setRandomBird] = useState({});
+  const step = 1;
 
   const errorAudio = document.getElementById('audioError');
   const winAudio = document.getElementById('audioWin');
@@ -25,11 +26,13 @@ const App = () => {
   };
 
   useEffect(() => {
-    if(page === 5 && win) {
+    if(page === birdsList.length && win) {
       setGameOver(true);
       setPage(0);
     }
-    setBirdsList(birdsData[page]);
+    if(page < birdsList.length) {
+      setBirdsList(birdsData[page]);
+    }
     setBird(birdsList[birdId - 1]);
   }, [birdsList, page, birdId, win]);
 
@@ -46,12 +49,11 @@ const App = () => {
 
   const changePage = () => {
     if (!win) return;
-    let result = page;
-    result += 1;
-    if (result > birdsList.length) {
-      result = birdsList.length;
+    if (page >= birdsList.length - step) {
+      setPage(birdsList.length);
+      return;
     }
-    setPage(result);
+    setPage(page + step);
     setWin(false);
     setBirdId(0);
     removeClasses();
