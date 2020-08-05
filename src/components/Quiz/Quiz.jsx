@@ -6,7 +6,7 @@ import cls from './Quiz.module.css';
 const Quiz = (props) => {
   const {
     win,
-    randomBird: { name, image },
+    randomBird: { name, image, },
   } = props;
 
   return (
@@ -17,7 +17,9 @@ const Quiz = (props) => {
           <div className={cls.quizeRightName}>
             <h3>{win ? name : '******'}</h3>
           </div>
-          <div>Audio player</div>
+          <div>
+            Audio
+          </div>
         </div>
       </div>
     </>

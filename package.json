@@ -49,6 +49,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
     "@hot-loader/react-dom": "npm:react-dom",
+    "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "fast-async": "^6.3.8",
     "prop-types": "^15.7.2",
