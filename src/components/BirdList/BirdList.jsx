@@ -20,7 +20,7 @@ const BirdList = (props) => {
             className={cls.bird}
             role='presentation'
             onClick={handlerBird}
-          ><span className={cls.lamp} />{name}</li>)}
+          ><span className='lamp' />{name}</li>)}
         </ul>
       </div>
     </>

@@ -1,10 +1,9 @@
 .topCardBird {
   display: flex;
-  margin-bottom: 1.8rem;
+  margin-bottom: 0.7rem;
 }
 
 .cardInfoBird {
-  /*display: inline-block;*/
   width: 100%;
 }
 

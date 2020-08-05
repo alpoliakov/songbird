@@ -129,6 +129,16 @@ h4 {
   grid-area: birdList;
 }
 
+.lamp {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #444;
+  transition: .2s;
+  margin-right: 15px;
+}
+
 .bird {
   grid-area: bird;
   padding: 1rem;
@@ -174,4 +184,12 @@ h4 {
 
 .btnWin:hover {
   background-color: #00efb2;
+}
+
+.winClass {
+  background-color: #00efb2;
+}
+
+.errorClass {
+  background-color: tomato;
 }
