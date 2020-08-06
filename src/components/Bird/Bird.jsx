@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import cls from './Bird.module.css';
 import imageURL from '../../assets/URLs/imageURL';
+import Player from "../Audio/Player/Player";
+import winAudio from '../../assets/audio/winAudio.mp3';
 
 const StartPage = () => {
   return (
@@ -14,7 +16,7 @@ const StartPage = () => {
 };
 
 const CardBird = (props) => {
-  const { bird } = props;
+  const { bird, win } = props;
   const { image, name, species, description } = bird;
   const [imageBird, setImageBird] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -44,7 +46,7 @@ const CardBird = (props) => {
         <div className={cls.cardInfoBird}>
           <h4 className={cls.name}>{name}</h4>
           <p className={`${cls.name} ${cls.nameLatin}`}>{species}</p>
-          <p>Audio</p>
+          <Player url={win ? winAudio : bird.audio} />
         </div>
       </div>
       <div className={cls.textBox}>
@@ -56,13 +58,14 @@ const CardBird = (props) => {
 
 CardBird.propTypes = {
   bird: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
+  win: PropTypes.bool.isRequired,
 };
 
 const Bird = (props) => {
-  const { bird } = props;
+  const { bird, win} = props;
   return (
     <>
-      <div className="bird">{!bird ? <StartPage /> : <CardBird bird={bird} />}</div>
+      <div className="bird">{!bird ? <StartPage /> : <CardBird bird={bird} win={win} />}</div>
     </>
   );
 };
@@ -71,4 +74,5 @@ export default Bird;
 
 Bird.propTypes = {
   bird: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
+  win: PropTypes.bool.isRequired,
 };

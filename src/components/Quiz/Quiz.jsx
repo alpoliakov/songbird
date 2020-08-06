@@ -3,24 +3,25 @@ import PropTypes from 'prop-types';
 import birdImage from '../../assets/images/bird.jpg';
 import cls from './Quiz.module.css';
 import Player from "../Audio/Player/Player";
+import winAudio from "../../assets/audio/winAudio.mp3";
 
 const Quiz = (props) => {
   const {
     win,
-    randomBird: { name, image, audio},
+    randomBird,
   } = props;
 
   return (
     <>
       <div className="quiz">
-        <img className="birdImage" src={win ? image : birdImage} alt={win ? image : 'bird'} />
+        <img className="birdImage" src={win ? randomBird.image : birdImage} alt='bird' />
         <div className={cls.quizeRight}>
           <div className={cls.quizeRightName}>
-            <h3>{win ? name : '******'}</h3>
+            <h3>{win ? randomBird.name : '******'}</h3>
           </div>
           <Player
             win={win}
-            audio = {audio}
+            url={win ? winAudio : randomBird.audio}
           />
         </div>
       </div>

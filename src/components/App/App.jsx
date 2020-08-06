@@ -20,20 +20,27 @@ const App = () => {
   const [randomBird, setRandomBird] = useState({});
   const [score, setScore] = useState(5);
   const [play, {stop}] = useSound(surprise);
+  const [playWin] = useSound(audioWin);
+  const [playError] = useSound(audioError);
   const step = 1;
-
-  const errorAudio = document.getElementById('audioError');
-  const winAudio = document.getElementById('audioWin');
 
   const random = (arr) => {
     return arr[Math.floor(Math.random() * arr.length)];
   };
 
+  const congrats = () => {
+    if(totalScore < 30) {
+      playWin();
+      return
+    }
+    play();
+  }
+
   useEffect(() => {
     if(page === birdsList.length && win) {
       setGameOver(true);
       setPage(0);
-      play();
+      congrats();
     }
     if(page < birdsList.length) {
       setBirdsList(birdsData[page]);
@@ -64,27 +71,17 @@ const App = () => {
     removeClasses();
   };
 
-  const winPlay = () => {
-    winAudio.currentTime = 0;
-    winAudio.play();
-  };
-
-  const errorPlay = () => {
-    errorAudio.currentTime = 0;
-    errorAudio.play();
-  };
-
   const handlingQuizResponses = (elem) => {
     setBirdId(+elem.id);
     const lampButton = elem.firstChild;
     if (+elem.id === +randomBird.id && !win) {
       setWin(true);
-      winPlay();
+      playWin();
       lampButton.classList.add('winClass');
       setTotalScore(totalScore + score);
       setScore(5);
     } else if (+elem.id !== +randomBird.id && !win) {
-      errorPlay();
+      playError();
       lampButton.classList.add('errorClass');
       setScore(score - 1);
     }
@@ -115,12 +112,6 @@ const App = () => {
           handlingQuizResponses={handlingQuizResponses}
         />
       )}
-      <audio src={audioWin} id="audioWin">
-        <track default kind="captions" />
-      </audio>
-      <audio src={audioError} id="audioError">
-        <track default kind="captions" />
-      </audio>
     </>
   );
 };

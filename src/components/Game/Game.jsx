@@ -11,7 +11,10 @@ const Game = (props) => {
       <div className="gameBox">
         <Quiz win={win} randomBird={randomBird} />
         <BirdList birdsList={birdsList} handlingQuizResponses={handlingQuizResponses} />
-        <Bird bird={bird} />
+        <Bird
+          bird={bird}
+          win={win}
+        />
         <button type="button" className={win ? 'btn btnWin' : 'btn'} onClick={changePage}>
           Next Level
         </button>

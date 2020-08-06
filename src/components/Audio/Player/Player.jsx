@@ -4,17 +4,14 @@ import cls from './Player.module.css';
 import Button from "../Button/Button";
 import Bar from "../Bar/Bar";
 import UseAudio from "../UseAudio/UseAudio";
-import winAudio from "../../../assets/audio/winAudio.mp3"
 
 const Player = (props) => {
-  const {audio, win} = props;
-  const { curTime, duration, playing, setPlaying, setClickedTime } = UseAudio();
+  const {win, url} = props;
+  const [audioElement, audioProps] = UseAudio(url);
+  const {curTime, duration, playing, setPlaying, setClickedTime} = audioProps;
   return (
     <div className={cls.player}>
-      <audio id="audio" src={win ? winAudio : audio} >
-        <track default kind="captions" />
-        Your browser does not support the <code>audio</code> element.
-      </audio>
+      {audioElement}
       <Button
         playing={playing}
         setPlaying={setPlaying}
@@ -30,8 +27,8 @@ const Player = (props) => {
 }
 
 Player.propTypes = {
-  audio: PropTypes.string.isRequired,
   win: PropTypes.bool.isRequired,
+  url: PropTypes.string.isRequired,
 }
 
 export default Player;
