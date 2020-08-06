@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
+import useSound from 'use-sound';
 import Header from '../Header/Header';
 import GameOver from '../GameOver/GameOver';
 import Game from '../Game/Game';
 import birdsData from '../../data/birds';
 import audioWin from '../../assets/audio/winAudio.mp3';
 import audioError from '../../assets/audio/error.mp3';
+import surprise from '../../assets/audio/siurpriz.mp3';
 
 const App = () => {
   const [gameOver, setGameOver] = useState(false);
@@ -17,8 +19,8 @@ const App = () => {
   const [bird, setBird] = useState({});
   const [randomBird, setRandomBird] = useState({});
   const [score, setScore] = useState(5);
+  const [play, {stop}] = useSound(surprise);
   const step = 1;
-
 
   const errorAudio = document.getElementById('audioError');
   const winAudio = document.getElementById('audioWin');
@@ -31,6 +33,7 @@ const App = () => {
     if(page === birdsList.length && win) {
       setGameOver(true);
       setPage(0);
+      play();
     }
     if(page < birdsList.length) {
       setBirdsList(birdsData[page]);
@@ -92,6 +95,7 @@ const App = () => {
     setBirdsList(birdsData[page]);
     setWin(false);
     setTotalScore(0);
+    stop();
   }
 
   return (
