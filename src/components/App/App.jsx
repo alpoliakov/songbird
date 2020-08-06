@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import GameOver from '../GameOver/GameOver';
 import Game from '../Game/Game';
 import birdsData from '../../data/birds';
-import audioWin from '../../assets/audio/win.mp3';
+import audioWin from '../../assets/audio/winAudio.mp3';
 import audioError from '../../assets/audio/error.mp3';
 
 const App = () => {

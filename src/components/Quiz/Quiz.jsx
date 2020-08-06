@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import birdImage from '../../assets/images/bird.jpg';
 import cls from './Quiz.module.css';
+import Player from "../Audio/Player/Player";
 
 const Quiz = (props) => {
   const {
     win,
-    randomBird: { name, image, },
+    randomBird: { name, image, audio},
   } = props;
 
   return (
@@ -17,9 +18,10 @@ const Quiz = (props) => {
           <div className={cls.quizeRightName}>
             <h3>{win ? name : '******'}</h3>
           </div>
-          <div>
-            Audio
-          </div>
+          <Player
+            win={win}
+            audio = {audio}
+          />
         </div>
       </div>
     </>

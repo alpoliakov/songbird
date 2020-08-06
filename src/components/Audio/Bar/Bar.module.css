@@ -1,0 +1,30 @@
+.bar {
+  user-select: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.barTime {
+  color: white;
+  font-size: 1rem;
+}
+
+.barProgress {
+  flex: 1;
+  border-radius: 5px;
+  margin: 0 20px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.barProgressKnob {
+  position: relative;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: #008966;
+}
