@@ -255,3 +255,31 @@ h4 {
   border: 1px solid #666!important;
 }
 
+input[type="range"] {
+  display: block;
+  -webkit-appearance: none;
+  background-color: #bdc3c7;
+  width: 200px;
+  height: 5px;
+  border-radius: 5px;
+  margin: 0 auto;
+  outline: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #008966;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+ input[type="range"]::-webkit-slider-thumb:hover {
+   background-color: white;
+   border: 2px solid #008966;
+ }
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.4);
+}

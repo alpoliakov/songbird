@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import PropTypes from 'prop-types';
 import moment from "moment";
 import 'moment-duration-format';
@@ -6,7 +6,7 @@ import cls from './Bar.module.css'
 
 
 const Bar = (props) => {
-
+  const barRef = useRef(null);
   const { duration, curTime, onTimeUpdate } = props;
 
   const curPercentage = (curTime / duration) * 100;
@@ -19,7 +19,7 @@ const Bar = (props) => {
 
   const calcClickedTime = (e) => {
     const clickPositionInPage = e.pageX;
-    const bar = document.querySelector(".bar__progress");
+    const bar = barRef.current;
     const barStart = bar.getBoundingClientRect().left + window.scrollX;
     const barWidth = bar.offsetWidth;
     const clickPositionInBar = clickPositionInPage - barStart;
@@ -27,7 +27,7 @@ const Bar = (props) => {
     return timePerPixel * clickPositionInBar;
   }
 
-  const handleTimeDrag = (e) => {
+  const handleTimeDrag = e => {
     onTimeUpdate(calcClickedTime(e));
 
     const updateTimeOnMove = eMove => {
@@ -44,6 +44,7 @@ const Bar = (props) => {
     <div className={cls.bar}>
       <span className={cls.barTime}>{formatDuration(curTime)}</span>
       <div
+        ref={barRef}
         role='presentation'
         className={`bar__progress ${cls.barProgress}`}
         style={{

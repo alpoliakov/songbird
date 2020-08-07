@@ -1,5 +1,17 @@
 .player {
   width: 100%;
   display: flex;
+  /*gap: 12px;*/
+  flex-direction: column;
+}
+
+.topPartPlayer {
+  display: flex;
   gap: 12px;
+}
+
+.bottomPartPlayer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }

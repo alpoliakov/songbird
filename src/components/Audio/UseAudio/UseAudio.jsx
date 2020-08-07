@@ -5,6 +5,7 @@ const UseAudio = (url) => {
   const [curTime, setCurTime] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [clickedTime, setClickedTime] = useState(0);
+  const [volume, setVolume] = useState(0.5);
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -15,10 +16,16 @@ const UseAudio = (url) => {
       setCurTime(audio.currentTime);
     }
     const setAudioTime = () => setCurTime(audio.currentTime);
+    const setVolumeRange = () => {
+      setVolume(volume);
+    }
 
     audio.addEventListener("loadeddata", setAudioData);
     audio.addEventListener("timeupdate", setAudioTime);
     audio.addEventListener('ended', () => {setPlaying(false)});
+    audio.addEventListener('volume', setVolumeRange);
+
+    audio.volume = volume;
 
     if(playing) {
       setTimeout(() => {
@@ -36,7 +43,8 @@ const UseAudio = (url) => {
     return () => {
       audio.removeEventListener("loadeddata", setAudioData);
       audio.removeEventListener("timeupdate", setAudioTime);
-      audio.addEventListener('ended', () => {setPlaying(false)});
+      audio.removeEventListener('ended', () => {setPlaying(false)});
+      audio.removeEventListener('volume', setVolumeRange);
     }
   })
   return [
@@ -52,6 +60,8 @@ const UseAudio = (url) => {
       curTime,
       duration,
       playing,
+      volume,
+      setVolume,
       setPlaying,
       setClickedTime
     }
