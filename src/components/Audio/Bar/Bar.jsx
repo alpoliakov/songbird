@@ -42,13 +42,12 @@ const Bar = (props) => {
 
   return (
     <div className={cls.bar}>
-      <span className={cls.barTime}>{formatDuration(curTime)}</span>
       <div
         ref={barRef}
         role='presentation'
         className={`bar__progress ${cls.barProgress}`}
         style={{
-          background: `linear-gradient(to right, orange ${curPercentage}%, white 0)`
+          background: `linear-gradient(to right, orange ${curPercentage - 0.8}%, white 0)`
         }}
         onMouseDown={e => handleTimeDrag(e)}
       >
@@ -57,7 +56,10 @@ const Bar = (props) => {
           style={{ left: `${curPercentage - 2}%` }}
         />
       </div>
-      <span className="bar__time" >{formatDuration(duration)}</span>
+      <div className={cls.boxTimer}>
+        <span className={cls.barTime}>{formatDuration(curTime)}</span>
+        <span className={cls.barTime} >{formatDuration(duration)}</span>
+      </div>
     </div>
   )
 }

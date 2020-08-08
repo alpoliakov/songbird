@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import cls from './Button.module.css';
 
 const Button = (props) => {
-  const size=60;
   const iconColor="hsl(0deg, 0%, 100%)";
   const idleBackgroundColor='rgb(0 124 93)';
   const activeBackgroundColor='rgb(0 188 140)';
@@ -29,8 +28,8 @@ const Button = (props) => {
         onClick={changeState}
         className={cls.playButton}
       >
-        <svg width={size} height={size}>
-          <circle cx="30" cy="30" r="30" fill={playing ? activeBackgroundColor : idleBackgroundColor} style={{cursor: "pointer"}} />
+        <svg width="62" height="52">
+          <circle cx="30" cy="30" r="22" fill={playing ? activeBackgroundColor : idleBackgroundColor} style={{cursor: "pointer"}} />
           <polygon
             points={playing ? square : triangle}
             fill={iconColor} style={{cursor: "pointer"}} />

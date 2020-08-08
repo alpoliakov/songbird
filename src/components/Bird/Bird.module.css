@@ -20,5 +20,25 @@
 .nameLatin {
   padding-bottom: 0.3rem;
   margin-top: 0.16rem;
-  margin-bottom: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .topCardBird {
+    display: grid;
+    grid:
+    "image"
+    "title";
+    gap: 20px;
+  }
+  .birdImage {
+    grid-area: image;
+    margin: 0 auto;
+  }
+  .cardInfoBird {
+    grid-area: title;
+  }
+
+  .textBox {
+    margin-top: 30px;
+  }
 }

@@ -8,3 +8,9 @@
 .quizeRightName {
   border-bottom: 0.1rem solid #555;
 }
+
+@media (max-width: 576px) {
+  .quizeRight {
+    gap: 30px;
+  }
+}

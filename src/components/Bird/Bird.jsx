@@ -20,7 +20,7 @@ const CardBird = (props) => {
   return (
     <>
       <div className={cls.topCardBird}>
-        <img className="birdImage" src={image} alt={species} />
+        <img className={`birdImage ${cls.birdImage}`} src={image} alt={species} />
         <div className={cls.cardInfoBird}>
           <h4 className={cls.name}>{name}</h4>
           <p className={`${cls.name} ${cls.nameLatin}`}>{species}</p>

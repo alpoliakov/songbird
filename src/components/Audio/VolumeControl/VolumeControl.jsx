@@ -11,7 +11,7 @@ const VolumeControl = (props) => {
 
   return (
     <div className={cls.boxVolume}>
-      <span>Volume:</span>
+      <span className='iconVolume' />
       <input
         id="volume"
         type='range'

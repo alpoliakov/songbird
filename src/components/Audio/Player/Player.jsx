@@ -11,7 +11,7 @@ const Player = (props) => {
   const [audioElement, audioProps] = UseAudio(url);
   const {curTime, duration, playing, setPlaying, setClickedTime, setVolume, volume} = audioProps;
   return (
-    <div className={cls.player}>
+    <div className={`box-player ${cls.player}`}>
       <div className={cls.topPartPlayer}>
         {audioElement}
         <Button
