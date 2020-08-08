@@ -47,13 +47,13 @@ const Bar = (props) => {
         role='presentation'
         className={`bar__progress ${cls.barProgress}`}
         style={{
-          background: `linear-gradient(to right, orange ${curPercentage - 0.8}%, white 0)`
+          background: `linear-gradient(to right, orange ${curPercentage - 0.05}%, white 0)`
         }}
         onMouseDown={e => handleTimeDrag(e)}
       >
         <span
           className={cls.barProgressKnob}
-          style={{ left: `${curPercentage - 2}%` }}
+          style={{ left: `${curPercentage}%` }}
         />
       </div>
       <div className={cls.boxTimer}>
