@@ -1,18 +1,24 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import uuid from 'react-uuid';
 import cls from './Header.module.css';
+import testsName from '../../data/tests-name';
 
 const Header = (props) => {
   const { page, totalScore } = props;
+  // const addBodyClass = (elem, className) => elem.classList.add(className);
+  // const removeBodyClass = (elem, className) => elem.classList.remove(className);
+
   useEffect(() => {
-    const li = document.querySelectorAll('.page-item');
-    li.forEach((elem, index) => {
+    const lists = document.querySelectorAll('.page-item');
+    lists.forEach((elem, index) => {
       elem.classList.remove('active');
       if (index === page) {
         elem.classList.add('active');
       }
     });
-  });
+  }, [page]);
+
   return (
     <>
       <div className={`header ${cls.header}`}>
@@ -23,36 +29,15 @@ const Header = (props) => {
           </h5>
         </div>
         <ul className="pagination">
-          <li className="page-item">
-            <a className="page-link" href="/#">
-              Разминка
-            </a>
-          </li>
-          <li className="page-item active">
-            <a className="page-link" href="/#">
-              Воробьиные
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="/#">
-              Лесные птицы
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="/#">
-              Певчие птицы
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="/#">
-              Хищные птицы
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="/#">
-              Морские птицы
-            </a>
-          </li>
+          {testsName.map((item, index) => {
+            return (
+              <li className={`page-item ${page === index ? 'active' : ''}`} key={uuid()}>
+                <a className="page-link" href="/#">
+                  {item}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </>

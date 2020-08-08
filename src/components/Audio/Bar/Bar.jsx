@@ -1,9 +1,8 @@
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import moment from "moment";
+import moment from 'moment';
 import 'moment-duration-format';
-import cls from './Bar.module.css'
-
+import cls from './Bar.module.css';
 
 const Bar = (props) => {
   const barRef = useRef(null);
@@ -12,10 +11,8 @@ const Bar = (props) => {
   const curPercentage = (curTime / duration) * 100;
 
   const formatDuration = (time) => {
-    return moment
-      .duration(time, "seconds")
-      .format("mm:ss", { trim: false });
-  }
+    return moment.duration(time, 'seconds').format('mm:ss', { trim: false });
+  };
 
   const calcClickedTime = (e) => {
     const clickPositionInPage = e.pageX;
@@ -25,49 +22,46 @@ const Bar = (props) => {
     const clickPositionInBar = clickPositionInPage - barStart;
     const timePerPixel = duration / barWidth;
     return timePerPixel * clickPositionInBar;
-  }
+  };
 
-  const handleTimeDrag = e => {
+  const handleTimeDrag = (e) => {
     onTimeUpdate(calcClickedTime(e));
 
-    const updateTimeOnMove = eMove => {
+    const updateTimeOnMove = (eMove) => {
       onTimeUpdate(calcClickedTime(eMove));
     };
 
-    document.addEventListener("mousemove", updateTimeOnMove);
-    document.addEventListener("mouseup", () => {
-      document.removeEventListener("mousemove", updateTimeOnMove);
+    document.addEventListener('mousemove', updateTimeOnMove);
+    document.addEventListener('mouseup', () => {
+      document.removeEventListener('mousemove', updateTimeOnMove);
     });
-  }
+  };
 
   return (
     <div className={cls.bar}>
       <div
         ref={barRef}
-        role='presentation'
+        role="presentation"
         className={`bar__progress ${cls.barProgress}`}
         style={{
-          background: `linear-gradient(to right, orange ${curPercentage - 0.05}%, white 0)`
+          background: `linear-gradient(to right, orange ${curPercentage - 0.05}%, white 0)`,
         }}
-        onMouseDown={e => handleTimeDrag(e)}
+        onMouseDown={(e) => handleTimeDrag(e)}
       >
-        <span
-          className={cls.barProgressKnob}
-          style={{ left: `${curPercentage}%` }}
-        />
+        <span className={cls.barProgressKnob} style={{ left: `${curPercentage}%` }} />
       </div>
       <div className={cls.boxTimer}>
         <span className={cls.barTime}>{formatDuration(curTime)}</span>
-        <span className={cls.barTime} >{formatDuration(duration)}</span>
+        <span className={cls.barTime}>{formatDuration(duration)}</span>
       </div>
     </div>
-  )
-}
+  );
+};
 
 Bar.propTypes = {
   duration: PropTypes.number.isRequired,
   curTime: PropTypes.number.isRequired,
   onTimeUpdate: PropTypes.func.isRequired,
-}
+};
 
 export default Bar;

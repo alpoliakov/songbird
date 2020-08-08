@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const UseAudio = (url) => {
   const [duration, setDuration] = useState(0);
@@ -14,24 +14,26 @@ const UseAudio = (url) => {
     const setAudioData = () => {
       setDuration(audio.duration);
       setCurTime(audio.currentTime);
-    }
+    };
     const setAudioTime = () => setCurTime(audio.currentTime);
     const setVolumeRange = () => {
       setVolume(volume);
-    }
+    };
 
-    audio.addEventListener("loadeddata", setAudioData);
-    audio.addEventListener("timeupdate", setAudioTime);
-    audio.addEventListener('ended', () => {setPlaying(false)});
+    audio.addEventListener('loadeddata', setAudioData);
+    audio.addEventListener('timeupdate', setAudioTime);
+    audio.addEventListener('ended', () => {
+      setPlaying(false);
+    });
     audio.addEventListener('volume', setVolumeRange);
 
     audio.volume = volume;
 
-    if(playing) {
+    if (playing) {
       setTimeout(() => {
         audio.play();
       }, 0);
-    }else {
+    } else {
       audio.pause();
     }
 
@@ -41,18 +43,16 @@ const UseAudio = (url) => {
     }
 
     return () => {
-      audio.removeEventListener("loadeddata", setAudioData);
-      audio.removeEventListener("timeupdate", setAudioTime);
-      audio.removeEventListener('ended', () => {setPlaying(false)});
+      audio.removeEventListener('loadeddata', setAudioData);
+      audio.removeEventListener('timeupdate', setAudioTime);
+      audio.removeEventListener('ended', () => {
+        setPlaying(false);
+      });
       audio.removeEventListener('volume', setVolumeRange);
-    }
-  })
+    };
+  });
   return [
-    <audio
-      id="audio"
-      src={url}
-      ref={audioRef}
-    >
+    <audio id="audio" src={url} ref={audioRef}>
       <track default kind="captions" />
       Your browser does not support the <code>audio</code> element.
     </audio>,
@@ -63,9 +63,9 @@ const UseAudio = (url) => {
       volume,
       setVolume,
       setPlaying,
-      setClickedTime
-    }
-  ]
-}
+      setClickedTime,
+    },
+  ];
+};
 
 export default UseAudio;

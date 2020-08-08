@@ -354,3 +354,7 @@ li {
     font-size: 2rem;
   }
 }
+
+polygon {
+  transition: 0.4s;
+}

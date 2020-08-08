@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cls from './Bird.module.css';
-import Player from "../Audio/Player/Player";
+import Player from '../Audio/Player/Player';
 import winAudio from '../../assets/audio/winAudio.mp3';
 
 const StartPage = () => {
@@ -40,7 +40,7 @@ CardBird.propTypes = {
 };
 
 const Bird = (props) => {
-  const { bird, win} = props;
+  const { bird, win } = props;
   return (
     <>
       <div className="bird">{!bird ? <StartPage /> : <CardBird bird={bird} win={win} />}</div>
