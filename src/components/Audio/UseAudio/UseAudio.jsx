@@ -5,7 +5,7 @@ const UseAudio = (url) => {
   const [curTime, setCurTime] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [clickedTime, setClickedTime] = useState(0);
-  const [volume, setVolume] = useState(0.5);
+  const [volume, setVolume] = useState(0.6);
   const audioRef = useRef(null);
 
   useEffect(() => {

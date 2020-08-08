@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
 import cls from './Header.module.css';
@@ -6,19 +6,6 @@ import testsName from '../../data/tests-name';
 
 const Header = (props) => {
   const { page, totalScore } = props;
-  // const addBodyClass = (elem, className) => elem.classList.add(className);
-  // const removeBodyClass = (elem, className) => elem.classList.remove(className);
-
-  useEffect(() => {
-    const lists = document.querySelectorAll('.page-item');
-    lists.forEach((elem, index) => {
-      elem.classList.remove('active');
-      if (index === page) {
-        elem.classList.add('active');
-      }
-    });
-  }, [page]);
-
   return (
     <>
       <div className={`header ${cls.header}`}>
