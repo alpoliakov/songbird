@@ -18,11 +18,13 @@ const GameOver = (props) => {
         </p>
         <hr className="win-line" />
         {totalScore < 30 ? (
-          <button onClick={tryPlayAgain} type="button" className="btn-again">
+          <button onClick={tryPlayAgain} type="button" className="btn-again" aria-label='Try Again'>
             Попробовать еще раз
           </button>
         ) : (
-          <img className="win-image" src={winImage} alt="Bird" />
+          <picture>
+            <img className="win-image" src={winImage} alt="Bird" />
+          </picture>
         )}
       </div>
     </>

@@ -12,7 +12,7 @@ const Game = (props) => {
         <Quiz win={win} randomBird={randomBird} />
         <BirdList birdsList={birdsList} handlingQuizResponses={handlingQuizResponses} />
         <Bird bird={bird} win={win} />
-        <button type="button" className={win ? 'btn btnWin' : 'btn'} onClick={changePage}>
+        <button type="button" className={win ? 'btn btnWin' : 'btn'} onClick={changePage} aria-label='Next Page'>
           Next Level
         </button>
       </div>
