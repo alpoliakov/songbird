@@ -11,7 +11,9 @@ const Quiz = (props) => {
   return (
     <>
       <div className="quiz">
-        <img className="birdImage" src={win ? randomBird.image : birdImage} alt="bird" />
+        <picture>
+          <img className="birdImage" src={win ? randomBird.image : birdImage} alt="bird" />
+        </picture>
         <div className={cls.quizeRight}>
           <div className={cls.quizeRightName}>
             <h3>{win ? randomBird.name : '******'}</h3>
