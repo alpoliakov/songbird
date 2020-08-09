@@ -18,7 +18,7 @@ const GameOver = (props) => {
         </p>
         <hr className="win-line" />
         {totalScore < 30 ? (
-          <button onClick={tryPlayAgain} type="button" className="btn-again" aria-label='Try Again'>
+          <button onClick={tryPlayAgain} type="button" className="btn-again" aria-label="Try Again">
             Попробовать еще раз
           </button>
         ) : (

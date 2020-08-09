@@ -25,7 +25,12 @@ const Button = (props) => {
 
   return (
     <div>
-      <button type="button" onClick={changeState} className={cls.playButton} aria-label='Control Audio'>
+      <button
+        type="button"
+        onClick={changeState}
+        className={cls.playButton}
+        aria-label="Control Audio"
+      >
         <svg width="62" height="52">
           <circle
             cx="30"
