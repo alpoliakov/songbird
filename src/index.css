@@ -1,6 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  text-align: left;
+  background-color: #222;
+  font-family: 'Lato', sans-serif;
+}
+
+.container {
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.41rem;
+}
+
+.header {
+  margin-top: .5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerTop {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.logo {
+  background-image: url("assets/images/logo.svg");
+  width: 200px;
+  height: 55px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.page-item .page-link {
+  background-color: #008966;
+  border-color: #007c5d;
+}
+
+.page-item.active .page-link {
+  background-color: #00bc8c;
+  border-color: #007c5d;
+}
+
+.pagination {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-bottom: 25px;
+  overflow: hidden;
+  display: flex;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+.page-item {
+  flex: auto;
+  text-align: center;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: 0;
+  line-height: 1.25;
+  color: #fff;
+  background-color: #00bc8c;
+  border: 0 solid transparent;
+  cursor: auto;
+  border-radius: 0;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.gameBox {
+  display: grid;
+  grid:
+    "quiz     quiz"
+    "birdList bird"
+    "btn       btn"
+    / 1fr     1fr;
+  row-gap: 25px;
+  column-gap: 30px;
+}
+
+.quiz {
+  grid-area: quiz;
+  display: flex;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  background-color: #303030;
+}
+
+.bird {
+  background-color: #303030;
+  border-radius: 0.25rem;
+}
+
+.birdList {
+  grid-area: birdList;
+}
+
+.lamp {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #444;
+  transition: .2s;
+  margin-right: 15px;
+}
+
+.bird {
+  grid-area: bird;
+  padding: 1rem;
+  border: 1px solid #444;
+}
+
+.birdImage {
+  width: 200px;
+  height: 155px;
+  border-radius: 10px;
+  vertical-align: middle;
+  border-style: none;
+  margin-right: 2rem;
+}
+
+.btn {
+  grid-area: btn;
+  background-color: #303030;
+  cursor: pointer;
+  box-shadow: none;
+  border: 1px solid #444;
+  color: #fff;
+  transition: .3s;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.75rem;
+}
+
+.btn:active {
+  border: 1px solid #666;
+}
+
+.btn:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.btnWin {
+  background-color: #00bc8c;
+}
+
+.btnWin:hover {
+  background-color: #00efb2;
+}
+
+.winClass {
+  background-color: #00efb2;
+}
+
+.errorClass {
+  background-color: tomato;
+}
+
+.gameOver {
+  padding: 4rem 2rem;
+  margin-bottom: 2rem;
+  background-color: #303030;
+  border-radius: 0.3rem;
+}
+
+.congrats {
+  font-size: 4.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.win-text {
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.win-line {
+  border: 0;
+  border-top: 1px solid #444;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  height: 0;
+  overflow: visible;
+}
+
+.win-image {
+  width: 100%;
+  vertical-align: middle;
+  border-style: none;
+}
+
+.btn-again {
+  width: 100%;
+  padding: 15px;
+  margin: 25px 0;
+  background-color: #00bc8c;
+  cursor: pointer;
+  box-shadow: none;
+  border: 1px solid #444;
+  transition: .3s;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  color: #fff;
+  outline: none;
+}
+
+.btn-again:hover {
+  background-color: #00efb2;
+}
+
+.btn-again:active {
+  border: 1px solid #666!important;
+}
+
+.bar-time
+
+#volume {
+  text-align: end;
+  transition: 0.3s;
+}
+
+input[type="range"] {
+  display: block;
+  -webkit-appearance: none;
+  background-color: #bdc3c7;
+  width: 120px;
+  height: 5px;
+  border-radius: 5px;
+  margin: 0 auto;
+  outline: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #008966;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+ input[type="range"]::-webkit-slider-thumb:hover {
+   background-color: white;
+   border: 2px solid #008966;
+ }
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.4);
+}
+
+.iconVolume {
+  width: 30px;
+  height: 20px;
+  background: url("assets/images/ui.svg") center no-repeat;
+}
+
+li {
+  height: auto;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+  .bird {
+    text-align: center;
+  }
+}
+
+@media(max-width: 990px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 540px;
+  }
+  .gameBox {
+    grid:
+    "quiz"
+    "birdList"
+    "bird"
+    "btn";
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+  .quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .birdImage {
+    margin-right: 0;
+  }
+
+  .congrats {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .congrats {
+    font-size: 2rem;
+  }
+}
+
+polygon {
+  transition: 0.4s;
 }

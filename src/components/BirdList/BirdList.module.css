@@ -1,0 +1,29 @@
+.birdsGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #303030;
+}
+
+.bird:first-child {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.bird:last-child {
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.bird {
+  list-style: none;
+  padding: .85rem 1.25rem;
+  border: 1px solid #555;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.bird:hover {
+  background-color: #444;
+}
+

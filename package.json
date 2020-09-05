@@ -49,14 +49,20 @@
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
     "@hot-loader/react-dom": "npm:react-dom",
+    "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "fast-async": "^6.3.8",
+    "moment": "^2.27.0",
+    "moment-duration-format": "^2.3.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.21",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^3.4.1",
+    "react-thumbor-img": "^4.0.2",
+    "react-uuid": "^1.0.2",
+    "use-sound": "^1.0.2"
   },
   "browserslist": {
     "production": [
